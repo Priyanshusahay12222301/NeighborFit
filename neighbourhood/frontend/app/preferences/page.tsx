@@ -354,10 +354,9 @@ export default function PreferencesPage() {
         {/* Navigation */}
         <div className="flex justify-between items-center px-2">
           <Button
-            variant="outline"
             onClick={handlePrevious}
             disabled={currentStep === 1}
-            className="flex items-center gap-3 px-8 py-6 rounded-full bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-medium"
+            className="flex items-center gap-3 px-8 py-6 rounded-full bg-white/5 border border-white/10 text-gray-200 hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-medium"
           >
             <ArrowLeft className="h-5 w-5" />
             Previous
