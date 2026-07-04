@@ -211,11 +211,11 @@ export default function PreferencesPage() {
                         <div
                           className="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-lg shadow-sm"
                         >
-                          {preferences[item.key as keyof Preferences][0] || 0}
+                          {(preferences[item.key as keyof Preferences] as number[])[0] || 0}
                         </div>
                       </div>
                       <Slider
-                        value={preferences[item.key as keyof Preferences]}
+                        value={preferences[item.key as keyof Preferences] as number[]}
                         onValueChange={(value) => handleSliderChange(item.key as keyof Preferences, value)}
                         max={100}
                         step={5}
@@ -265,11 +265,11 @@ export default function PreferencesPage() {
                         <div
                           className="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-lg shadow-sm"
                         >
-                          {preferences[item.key as keyof Preferences][0] || 0}
+                          {(preferences[item.key as keyof Preferences] as number[])[0] || 0}
                         </div>
                       </div>
                       <Slider
-                        value={preferences[item.key as keyof Preferences]}
+                        value={preferences[item.key as keyof Preferences] as number[]}
                         onValueChange={(value) => handleSliderChange(item.key as keyof Preferences, value)}
                         max={100}
                         step={5}
@@ -338,7 +338,7 @@ export default function PreferencesPage() {
                           </div>
                         </div>
                         <Switch
-                          checked={preferences[item.key as keyof Preferences]}
+                          checked={preferences[item.key as keyof Preferences] as boolean}
                           onCheckedChange={(checked) => handleSwitchChange(item.key as keyof Preferences, checked)}
                           className="scale-125"
                         />
