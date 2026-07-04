@@ -5,57 +5,34 @@ import Link from "next/link"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/10 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Header */}
-      <header className="relative z-50 border-b border-white/10 bg-black/20 backdrop-blur-xl sticky top-0">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3 group">
-            <div className="relative">
-              <MapPin className="h-8 w-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-              <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-lg group-hover:bg-blue-300/30 transition-all duration-300"></div>
+    <div className="min-h-screen bg-[#030712] text-gray-200 selection:bg-blue-500/30 selection:text-blue-200 font-sans relative overflow-hidden">
+      
+      {/* Navigation */}
+      <header className="relative z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl sticky top-0">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between max-w-7xl">
+          <div className="flex items-center gap-3 group cursor-pointer">
+            <div className="bg-blue-600 p-2 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)] group-hover:shadow-[0_0_25px_rgba(37,99,235,0.7)] transition-shadow">
+              <MapPin className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-white tracking-tight">
               NeighborMatch
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="#features"
-              className="text-white/70 hover:text-white transition-all duration-300 hover:scale-105"
+              className="text-gray-400 hover:text-white transition-all duration-300 font-medium"
             >
               Features
             </Link>
             <Link
               href="#how-it-works"
-              className="text-white/70 hover:text-white transition-all duration-300 hover:scale-105"
+              className="text-gray-400 hover:text-white transition-all duration-300 font-medium"
             >
               How It Works
             </Link>
-            <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <Link href="/preferences" className="flex items-center gap-2">
+            <Button className="bg-white/10 hover:bg-white/20 text-white rounded-full px-6 shadow-sm border border-white/20 backdrop-blur-md transition-all">
+              <Link href="/preferences" className="flex items-center gap-2 font-medium">
                 Get Started
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -65,22 +42,38 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative z-10 py-32 px-4">
-        <div className="container mx-auto text-center max-w-6xl">
+      <section className="relative z-10 py-32 px-4 min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Modern Vibrant Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/60 z-10" /> {/* Darker overlay for seamless transition */}
+          <img 
+            src="https://images.unsplash.com/photo-1519999482648-25049ddd37b1?q=80&w=2126&auto=format&fit=crop" 
+            alt="Stunning modern neighborhood view" 
+            className="w-full h-full object-cover object-center scale-105 animate-float-slow"
+          />
+          {/* Decorative colored blurred circles */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-blob z-0"></div>
+          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-blob animation-delay-2000 z-0"></div>
+          
+          {/* Seamless dark gradient fade into the next section */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#030712] to-transparent z-10 pointer-events-none"></div>
+        </div>
+
+        <div className="container mx-auto text-center max-w-6xl relative z-20 mt-[-5vh]">
           <div className="animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20">
-              <Sparkles className="h-4 w-4 text-yellow-400" />
-              <span className="text-white/90 text-sm">AI-Powered Neighborhood Matching</span>
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl rounded-full px-6 py-3 mb-8 border border-white/20 shadow-xl text-white">
+              <Sparkles className="h-5 w-5 text-blue-300" />
+              <span className="text-sm font-semibold tracking-wide">AI-Powered Neighborhood Matching</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 leading-tight">
-              Find Your
-              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
+            <h1 className="text-6xl md:text-8xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight drop-shadow-lg">
+              Find Your <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500 drop-shadow-none">
                 Perfect Home
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-white/70 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-100 mb-12 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-md">
               Discover neighborhoods that match your lifestyle with our intelligent AI system. From walkability to
               nightlife, we find communities that feel like home.
             </p>
@@ -88,9 +81,10 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
                 size="lg"
-                className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-12 py-6 rounded-full shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 hover:scale-105 border-0"
+                className="group bg-blue-600 hover:bg-blue-700 text-white text-lg px-12 py-7 rounded-full shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:shadow-[0_0_60px_rgba(37,99,235,0.6)] transition-all duration-300 border border-blue-500/50 font-medium relative overflow-hidden"
               >
-                <Link href="/preferences" className="flex items-center gap-3">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                <Link href="/preferences" className="flex items-center gap-3 relative z-10">
                   Start Matching
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
@@ -99,31 +93,31 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-12 py-6 rounded-full bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:scale-105 transition-all duration-300"
+                className="text-lg px-12 py-7 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/20 border-white/30 shadow-lg transition-all duration-300 font-medium"
               >
                 Watch Demo
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto">
+            <div className="grid grid-cols-3 gap-8 mt-24 max-w-3xl mx-auto bg-white/10 backdrop-blur-xl rounded-[2rem] p-8 border border-white/20 shadow-2xl">
               <div className="text-center group">
-                <div className="text-3xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
                   50K+
                 </div>
-                <div className="text-white/60">Happy Users</div>
+                <div className="text-blue-200 font-medium text-sm md:text-base uppercase tracking-widest">Happy Users</div>
               </div>
               <div className="text-center group">
-                <div className="text-3xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
                   1M+
                 </div>
-                <div className="text-white/60">Neighborhoods</div>
+                <div className="text-blue-200 font-medium text-sm md:text-base uppercase tracking-widest">Neighborhoods</div>
               </div>
               <div className="text-center group">
-                <div className="text-3xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
                   98%
                 </div>
-                <div className="text-white/60">Match Rate</div>
+                <div className="text-blue-200 font-medium text-sm md:text-base uppercase tracking-widest">Match Rate</div>
               </div>
             </div>
           </div>
@@ -131,18 +125,14 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="relative z-10 py-32 px-4">
-        <div className="container mx-auto">
+      <section id="features" className="relative z-10 py-32 px-4 bg-[#030712]">
+        <div className="container mx-auto max-w-7xl relative z-10">
           <div className="text-center mb-20 animate-fade-in-up">
-            <h2 className="text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
               Why Choose
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                {" "}
-                NeighborMatch
-              </span>
-              ?
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"> NeighborMatch</span>?
             </h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
               Our intelligent matching system considers multiple factors to find neighborhoods that truly fit your
               lifestyle.
             </p>
@@ -155,49 +145,56 @@ export default function HomePage() {
                 title: "Walkability Score",
                 description:
                   "Find neighborhoods where you can walk to daily amenities, restaurants, and entertainment.",
-                color: "from-blue-500 to-cyan-500",
-                delay: "0ms",
+                bg: "bg-blue-500/10",
+                color: "text-blue-400",
+                border: "group-hover:border-blue-500/50"
               },
               {
                 icon: Shield,
                 title: "Safety Ratings",
                 description: "Comprehensive safety data including crime rates, lighting, and community watch programs.",
-                color: "from-green-500 to-emerald-500",
-                delay: "200ms",
+                bg: "bg-emerald-500/10",
+                color: "text-emerald-400",
+                border: "group-hover:border-emerald-500/50"
               },
               {
                 icon: Users,
                 title: "Community Vibe",
                 description: "Discover the social atmosphere, from quiet residential to bustling urban communities.",
-                color: "from-purple-500 to-pink-500",
-                delay: "400ms",
+                bg: "bg-purple-500/10",
+                color: "text-purple-400",
+                border: "group-hover:border-purple-500/50"
               },
               {
                 icon: Coffee,
                 title: "Local Amenities",
                 description: "Access to cafes, gyms, parks, schools, and other lifestyle essentials you care about.",
-                color: "from-orange-500 to-red-500",
-                delay: "600ms",
+                bg: "bg-amber-500/10",
+                color: "text-amber-400",
+                border: "group-hover:border-amber-500/50"
               },
             ].map((feature, index) => (
               <Card
                 key={index}
-                className="group bg-white/5 backdrop-blur-xl border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-fade-in-up"
-                style={{ animationDelay: feature.delay }}
+                className={`group bg-white/5 border border-white/10 backdrop-blur-md shadow-xl transition-all duration-500 hover:-translate-y-2 rounded-[2rem] overflow-hidden ${feature.border}`}
               >
-                <CardHeader className="text-center pb-4">
+                <CardHeader className="text-center pb-4 pt-10 relative z-10">
                   <div
-                    className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${feature.color} p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    className={`w-16 h-16 mx-auto mb-6 rounded-2xl ${feature.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-white/5`}
                   >
-                    <feature.icon className="h-8 w-8 text-white" />
+                    <feature.icon className={`h-8 w-8 ${feature.color}`} />
                   </div>
-                  <CardTitle className="text-white text-xl group-hover:text-blue-300 transition-colors duration-300">
+                  <CardTitle className="text-white text-xl font-semibold">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-white/70 leading-relaxed">{feature.description}</CardDescription>
+                <CardContent className="px-8 pb-10 relative z-10">
+                  <CardDescription className="text-gray-400 leading-relaxed text-base text-center">
+                    {feature.description}
+                  </CardDescription>
                 </CardContent>
+                {/* Hover gradient effect inside card */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </Card>
             ))}
           </div>
@@ -205,50 +202,47 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="relative z-10 py-32 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-20 animate-fade-in-up">
-            <h2 className="text-5xl font-bold text-white mb-6">How It Works</h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+      <section id="how-it-works" className="relative z-10 py-32 px-4 bg-[#050b1a] border-t border-white/5">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-24 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">How It Works</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
               Three simple steps to find your ideal neighborhood match.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
+            <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0 z-0 rounded-full"></div>
             {[
               {
                 step: "1",
                 title: "Set Preferences",
                 description:
                   "Tell us what matters most to you: walkability, safety, nightlife, family-friendliness, and more.",
-                delay: "0ms",
               },
               {
                 step: "2",
                 title: "AI Analysis",
                 description:
                   "Our algorithm analyzes thousands of data points to find neighborhoods that match your lifestyle.",
-                delay: "300ms",
               },
               {
                 step: "3",
                 title: "Discover Matches",
                 description:
                   "Explore personalized recommendations with detailed insights, photos, and interactive maps.",
-                delay: "600ms",
               },
             ].map((item, index) => (
-              <div key={index} className="text-center group animate-fade-in-up" style={{ animationDelay: item.delay }}>
-                <div className="relative mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
+              <div key={index} className="text-center group relative z-10 px-4">
+                <div className="relative mb-10 flex justify-center">
+                  <div className="w-24 h-24 bg-[#030712] border border-blue-500/30 text-blue-400 rounded-full flex items-center justify-center text-3xl font-bold shadow-[0_0_20px_rgba(37,99,235,0.2)] group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-400 group-hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all duration-500">
                     {item.step}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-300 transition-colors duration-300">
+                <h3 className="text-2xl font-semibold mb-4 text-white">
                   {item.title}
                 </h3>
-                <p className="text-white/70 leading-relaxed">{item.description}</p>
+                <p className="text-gray-400 leading-relaxed text-lg font-light">{item.description}</p>
               </div>
             ))}
           </div>
@@ -256,10 +250,10 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="relative z-10 py-32 px-4">
-        <div className="container mx-auto">
+      <section className="relative z-10 py-32 px-4 bg-[#030712] border-t border-white/5">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-white mb-6">What Our Users Say</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">What Our Users Say</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -270,7 +264,8 @@ export default function HomePage() {
                 content:
                   "NeighborMatch helped me find the perfect walkable neighborhood in Portland. The AI recommendations were spot-on!",
                 rating: 5,
-                delay: "0ms",
+                initial: "S",
+                color: "bg-purple-500/20 text-purple-300 border border-purple-500/30"
               },
               {
                 name: "Mike Chen",
@@ -278,7 +273,8 @@ export default function HomePage() {
                 content:
                   "As a new parent, finding a family-friendly area was crucial. This platform made it so easy to compare safety and school ratings.",
                 rating: 5,
-                delay: "200ms",
+                initial: "M",
+                color: "bg-blue-500/20 text-blue-300 border border-blue-500/30"
               },
               {
                 name: "Emily Rodriguez",
@@ -286,24 +282,29 @@ export default function HomePage() {
                 content:
                   "I love the nightlife scene, and NeighborMatch found me the perfect spot with amazing restaurants and bars nearby.",
                 rating: 5,
-                delay: "400ms",
+                initial: "E",
+                color: "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
               },
             ].map((testimonial, index) => (
               <Card
                 key={index}
-                className="bg-white/5 backdrop-blur-xl border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-105 animate-fade-in-up"
-                style={{ animationDelay: testimonial.delay }}
+                className="bg-white/5 border border-white/10 backdrop-blur-md shadow-xl hover:shadow-2xl hover:border-white/20 transition-all duration-300 rounded-[2rem] overflow-hidden"
               >
-                <CardContent className="p-8">
-                  <div className="flex mb-4">
+                <CardContent className="p-10">
+                  <div className="flex mb-6">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                      <Star key={i} className="h-5 w-5 text-amber-400 fill-current drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
                     ))}
                   </div>
-                  <p className="text-white/80 mb-6 italic">"{testimonial.content}"</p>
-                  <div>
-                    <div className="font-semibold text-white">{testimonial.name}</div>
-                    <div className="text-white/60 text-sm">{testimonial.role}</div>
+                  <p className="text-gray-300 mb-8 text-lg font-light leading-relaxed">"{testimonial.content}"</p>
+                  <div className="flex items-center gap-4">
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${testimonial.color}`}>
+                      {testimonial.initial}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-white text-lg">{testimonial.name}</div>
+                      <div className="text-gray-400 text-sm font-medium">{testimonial.role}</div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -313,76 +314,87 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 py-32 px-4">
-        <div className="container mx-auto text-center">
-          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl rounded-3xl p-16 border border-white/10 animate-fade-in-up">
-            <h2 className="text-5xl font-bold text-white mb-6">Ready to Find Your Perfect Neighborhood?</h2>
-            <p className="text-xl text-white/70 mb-12 max-w-3xl mx-auto">
-              Join thousands of users who have found their ideal community with NeighborMatch.
-            </p>
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-12 py-6 rounded-full shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 hover:scale-105 border-0"
-            >
-              <Link href="/preferences" className="flex items-center gap-3">
-                Start Your Search
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </Button>
+      <section className="relative z-10 py-32 px-4 bg-[#030712]">
+        <div className="container mx-auto text-center max-w-7xl">
+          <div className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 rounded-[3rem] p-16 md:p-24 border border-white/10 max-w-5xl mx-auto shadow-2xl relative overflow-hidden backdrop-blur-xl">
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">Ready to Find Your <br/>Perfect Neighborhood?</h2>
+              <p className="text-xl text-blue-100/80 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                Join thousands of users who have found their ideal community with NeighborMatch.
+              </p>
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-500 text-white text-lg px-12 py-7 rounded-full shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:shadow-[0_0_50px_rgba(37,99,235,0.6)] transition-all duration-300 border border-blue-400/50 font-medium group"
+              >
+                <Link href="/preferences" className="flex items-center gap-3">
+                  Start Your Search
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+            </div>
+            {/* Subtle decorative circles */}
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500 rounded-full opacity-20 blur-3xl mix-blend-screen"></div>
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500 rounded-full opacity-20 blur-3xl mix-blend-screen"></div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-black/40 backdrop-blur-xl border-t border-white/10 py-16 px-4">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
+      <footer className="relative z-10 bg-[#02040a] border-t border-white/5 py-16 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid md:grid-cols-12 gap-8 mb-16">
+            <div className="col-span-12 md:col-span-5 pr-8">
               <div className="flex items-center gap-3 mb-6">
-                <MapPin className="h-6 w-6 text-blue-400" />
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <MapPin className="h-7 w-7 text-blue-500" />
+                <span className="text-2xl font-bold text-white tracking-tight">
                   NeighborMatch
                 </span>
               </div>
-              <p className="text-white/60 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed font-light text-lg">
                 Helping you find the perfect neighborhood that matches your lifestyle with AI-powered recommendations.
               </p>
             </div>
 
-            {[
-              {
-                title: "Product",
-                links: ["Features", "How It Works", "Pricing", "API"],
-              },
-              {
-                title: "Support",
-                links: ["Help Center", "Contact Us", "Privacy Policy", "Terms"],
-              },
-              {
-                title: "Company",
-                links: ["About", "Blog", "Careers", "Press"],
-              },
-            ].map((section, index) => (
-              <div key={index}>
-                <h3 className="font-semibold text-white mb-6">{section.title}</h3>
-                <ul className="space-y-3">
-                  {section.links.map((link) => (
-                    <li key={link}>
-                      <Link
-                        href="#"
-                        className="text-white/60 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block"
-                      >
-                        {link}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <div className="col-span-12 md:col-span-7 grid grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Product",
+                  links: ["Features", "How It Works", "Pricing", "API"],
+                },
+                {
+                  title: "Support",
+                  links: ["Help Center", "Contact Us", "Privacy Policy", "Terms"],
+                },
+                {
+                  title: "Company",
+                  links: ["About", "Blog", "Careers", "Press"],
+                },
+              ].map((section, index) => (
+                <div key={index}>
+                  <h3 className="font-semibold text-white mb-6 text-lg">{section.title}</h3>
+                  <ul className="space-y-4">
+                    {section.links.map((link) => (
+                      <li key={link}>
+                        <Link
+                          href="#"
+                          className="text-gray-400 hover:text-blue-400 transition-colors font-medium"
+                        >
+                          {link}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/60">
+          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 font-medium text-sm">
             <p>&copy; 2024 NeighborMatch. All rights reserved.</p>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <Link href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
+              <Link href="#" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
+            </div>
           </div>
         </div>
       </footer>

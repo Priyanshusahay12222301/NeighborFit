@@ -1,78 +1,109 @@
-# Neighborhood Matching App
+<div align="center">
+  
+# 🏙️ NeighborMatch (NeighborFit)
 
-A full-stack application that helps users find their perfect neighborhood match based on their preferences.
+An elegant, AI-powered neighborhood matching application. Find the perfect neighborhood that aligns with your lifestyle, budget, and personal preferences with a beautifully crafted, glassmorphic UI.
 
-## Features
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)
 
-- **Dynamic Results**: Fetches neighborhood data from a REST API instead of static data
-- **Search & Filter**: Filter neighborhoods by walkability, safety, cost, and other criteria
-- **Interactive UI**: Modern, responsive design with loading states and error handling
-- **Real-time Updates**: Live search results with proper loading indicators
+</div>
 
-## Tech Stack
+---
+
+## 📸 Screenshots
+
+*(To display your actual website images here, take screenshots of your app and save them in the `frontend/public/screenshots/` folder with the names below!)*
+
+### 1. The Landing Page
+![Landing Page](./frontend/public/screenshots/landing.png)
+*A stunning, premium dark theme with vibrant glassmorphic elements and animated background effects.*
+
+### 2. Preference Wizard
+![Preferences Wizard](./frontend/public/screenshots/preferences.png)
+*A sleek, multi-step wizard to dial in exactly what you are looking for in a neighborhood (Walkability, Cost, Transit, etc.).*
+
+### 3. Match Results
+![Match Results](./frontend/public/screenshots/results.png)
+*AI-driven results showing your top neighborhood matches based on your unique criteria.*
+
+---
+
+## ✨ Features
+
+- **Premium Dark UI**: A completely cohesive, modern dark theme utilizing Tailwind CSS and glassmorphism (backdrop blurs, glowing accents).
+- **Interactive Wizard**: A beautiful multi-step preference form with animated transitions and intuitive sliders.
+- **Dynamic Results**: Fetches and filters real neighborhood data from a custom REST API.
+- **Search & Filter**: Filter neighborhoods by walkability, safety, cost, nightlife, and more.
+- **Real-time Updates**: Live search results with proper loading indicators and error handling.
+
+## 🛠️ Tech Stack
 
 ### Frontend
-- Next.js 14 with App Router
-- TypeScript
-- Tailwind CSS
-- Shadcn/ui components
-- Lucide React icons
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS, globals.css for custom animations
+- **Components**: Shadcn/ui, Lucide React icons
 
 ### Backend
-- Node.js with Express
-- RESTful API
-- CORS enabled
-- Mock data with realistic neighborhood information
+- **Framework**: Node.js with Express
+- **API**: RESTful API with CORS enabled
+- **Data**: Serving realistic neighborhood mock data and filter logic
 
-## Getting Started
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
 
-### Installation
+### Quick Start (Run Both)
 
 1. **Install all dependencies:**
 ```bash
 npm run install:all
 ```
 
-2. **Start both frontend and backend:**
+2. **Start the application:**
 ```bash
 npm run dev
 ```
 
-This will start:
-- Frontend: http://localhost:3000
-- Backend: http://localhost:5000
+This will concurrently start:
+- **Frontend**: http://localhost:3000
+- **Backend**: http://localhost:5000
 
-### Alternative: Run separately
+### Running Separately
 
-**Backend only:**
+**Backend Server:**
 ```bash
 cd backend
 npm install
 npm run dev
 ```
 
-**Frontend only:**
+**Frontend Application:**
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-## API Endpoints
+---
 
-### Health Check
-- `GET /api/health` - Check if API is running
+## 📡 API Endpoints
 
-### Neighborhoods
-- `GET /api/neighborhoods` - Get all neighborhoods
-- `GET /api/neighborhoods/:id` - Get specific neighborhood
-- `POST /api/neighborhoods/search` - Search neighborhoods with filters
+The backend Express server exposes the following routes:
 
-### Search Parameters
+- `GET /api/health` - Check if the API is running
+- `GET /api/neighborhoods` - Fetch all neighborhoods
+- `GET /api/neighborhoods/:id` - Fetch details for a specific neighborhood
+- `POST /api/neighborhoods/search` - Search/filter neighborhoods based on preferences
+
+### Example Search Payload
 ```json
 {
   "preferences": {
@@ -88,78 +119,28 @@ npm run dev
 }
 ```
 
-## Project Structure
+---
 
-```
+## 📁 Project Structure
+
+```text
 neighbourhood/
-├── frontend/                 # Next.js frontend
-│   ├── app/                 # App router pages
-│   ├── components/          # UI components
-│   ├── lib/                 # Utilities (API, utils)
-│   └── public/              # Static assets
-├── backend/                 # Express.js backend
-│   ├── server.js           # Main server file
+├── frontend/                 # Next.js frontend application
+│   ├── app/                 # App router pages (page.tsx, preferences/page.tsx)
+│   ├── components/          # Reusable UI components (Shadcn)
+│   ├── lib/                 # Utilities (API calls, formatters)
+│   └── public/              # Static assets (images, screenshots)
+├── backend/                 # Node.js / Express backend
+│   ├── server.js           # Main server & routing logic
 │   └── package.json        # Backend dependencies
-└── package.json            # Root package.json
+└── package.json            # Root configuration for concurrent running
 ```
 
-## Key Features Implemented
+---
 
-### Dynamic Data Fetching
-- Replaced static mock data with API calls
-- Added proper error handling and loading states
-- Implemented retry functionality
+## ⚙️ Environment Variables
 
-### Search & Filter
-- Real-time filtering based on user preferences
-- Multiple filter criteria (walkability, safety, cost, etc.)
-- Reset functionality to clear filters
-
-### Error Handling
-- Network error handling
-- API error responses
-- User-friendly error messages
-- Retry mechanisms
-
-### Loading States
-- Skeleton loading for initial data fetch
-- Search-specific loading indicators
-- Disabled states during API calls
-
-## Environment Variables
-
-Create a `.env.local` file in the frontend directory:
-```
+Ensure you have a `.env.local` file in the `frontend` directory if you ever change the backend port:
+```env
 NEXT_PUBLIC_API_URL=http://localhost:5000
-```
-
-## Development
-
-### Adding New Neighborhoods
-Edit `backend/server.js` and add new neighborhood objects to the `neighborhoods` array.
-
-### Adding New Filter Criteria
-1. Update the `SearchPreferences` interface in `frontend/lib/api.ts`
-2. Add the new filter logic in `backend/server.js`
-3. Add the UI input in `frontend/app/results/page.tsx`
-
-## API Response Format
-
-```json
-{
-  "success": true,
-  "data": [...],
-  "count": 5,
-  "message": "Optional message"
-}
-```
-
-## Error Response Format
-
-```json
-{
-  "success": false,
-  "message": "Error description",
-  "error": "Detailed error info"
-}
 ``` 
